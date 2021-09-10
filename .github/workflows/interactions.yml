@@ -1,0 +1,35 @@
+name: Interaction tests
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    cypress-run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Cache pnpm modules
+              uses: actions/cache@v2
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+
+            - name: Install dependencies
+              uses: pnpm/action-setup@v2.0.1
+              with:
+                  version: ^6.0.0
+                  run_install: true
+
+            - name: Cypress run
+              uses: cypress-io/github-action@v2
+              with:
+                  install: false
+                  start: pnpm storybook
+                  wait-on: 'http://localhost:6006'
