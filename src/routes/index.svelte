@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { format } from 'date-fns';
 	import { Button } from '$lib/components/atoms';
-	import is from 'date-fns/locale/is';
 
 	let rawTimer = new Date();
 	let interval: NodeJS.Timeout;
