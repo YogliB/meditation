@@ -67,18 +67,28 @@
 	<Button on:click={subtractMinutes} icon="fas fa-minus" />
 
 	<div class="flex items-center gap-4">
-		<Button
-			on:click={startTimer}
-			color="success"
-			icon="fas fa-play"
-			disabled={isActive}
-		/>
-		<Button
-			on:click={stopTimer}
-			color="warning"
-			icon="fas fa-pause"
-			disabled={!isActive}
-		/>
+		{#if !isActive}
+			<Button
+				on:click={startTimer}
+				color="success"
+				icon="fas fa-play"
+				disabled={isActive}
+				size="large"
+				isRounded
+			/>
+		{/if}
+
+		{#if isActive}
+			<Button
+				on:click={stopTimer}
+				color="warning"
+				icon="fas fa-pause"
+				disabled={!isActive}
+				size="large"
+				isRounded
+			/>
+		{/if}
+
 		<Button on:click={resetTimer} color="danger" icon="fas fa-stop" />
 	</div>
 </div>
