@@ -3,12 +3,13 @@
 	import type { ButtonColor, ButtonType, ButtonSize } from './models';
 
 	export let color: ButtonColor = 'primary';
-	export let type: ButtonType = 'button';
-	export let size: ButtonSize = 'normal';
-	export let isLoading = false;
-	export let isRounded = false;
 	export let disabled = false;
 	export let icon: string = '';
+	export let isLoading = false;
+	export let isRounded = false;
+	export let label: string = '';
+	export let size: ButtonSize = 'normal';
+	export let type: ButtonType = 'button';
 </script>
 
 <button
@@ -29,16 +30,18 @@
 	{type}
 	on:click
 >
-	<span
-		class="icon"
-		class:is-small={size === 'small'}
-		class:is-medium={size === 'medium'}
-		class:is-large={size === 'large'}
-	>
-		<Icon {icon} />
-	</span>
+	{#if icon?.trim()}
+		<span
+			class="icon"
+			class:is-small={size === 'small'}
+			class:is-medium={size === 'medium'}
+			class:is-large={size === 'large'}
+		>
+			<Icon {icon} />
+		</span>
+	{/if}
 
-	<slot />
+	{label ?? ''}
 </button>
 
 <style lang="scss" global>
