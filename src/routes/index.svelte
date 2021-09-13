@@ -7,7 +7,7 @@
 	let minutes = 5;
 	let isActive = false;
 
-	resetTimer();
+	stopTimer();
 
 	function startTimer() {
 		isActive = true;
@@ -21,12 +21,13 @@
 		}, 1000);
 	}
 
-	function stopTimer() {
+	function pauseTimer() {
 		isActive = false;
 		clearInterval(interval);
 	}
 
-	function resetTimer() {
+	function stopTimer() {
+		isActive = false;
 		interval && clearInterval(interval);
 		rawTimer.setMinutes(minutes);
 		rawTimer.setSeconds(0);
@@ -53,17 +54,26 @@
 		rawTimer = new Date(rawTimer);
 	}
 
-	$: displayTimer = format(rawTimer, 'mm:ss');
+	$: displayTimer =
+		rawTimer.getMinutes() === 0 ? '60:00' : format(rawTimer, 'mm:ss');
 </script>
 
 <div class="h-full flex flex-col justify-center items-center gap-4">
-	<Button on:click={addMinutes} icon="fas fa-plus" />
+	<Button
+		on:click={addMinutes}
+		icon="fas fa-plus"
+		disabled={minutes === 60}
+	/>
 
-	<h3 class="text-6xl">
+	<h3 class="text-7xl">
 		{displayTimer}
 	</h3>
 
-	<Button on:click={subtractMinutes} icon="fas fa-minus" />
+	<Button
+		on:click={subtractMinutes}
+		icon="fas fa-minus"
+		disabled={minutes === 5}
+	/>
 
 	<div class="flex items-center gap-4">
 		{#if !isActive}
@@ -79,7 +89,7 @@
 
 		{#if isActive}
 			<Button
-				on:click={stopTimer}
+				on:click={pauseTimer}
 				color="warning"
 				icon="fas fa-pause"
 				disabled={!isActive}
@@ -88,6 +98,14 @@
 			/>
 		{/if}
 
-		<Button on:click={resetTimer} color="danger" icon="fas fa-stop" />
+		{#if isActive || rawTimer.getMinutes() !== minutes}
+			<Button
+				on:click={stopTimer}
+				color="danger"
+				icon="fas fa-stop"
+				size="large"
+				isRounded
+			/>
+		{/if}
 	</div>
 </div>
