@@ -3,6 +3,10 @@ lockfileVersion: 5.3
 specifiers:
   '@babel/core': 7.15.5
   '@babel/preset-env': 7.15.6
+  '@fortawesome/fontawesome-common-types': ^0.2.36
+  '@fortawesome/free-brands-svg-icons': ^5.15.4
+  '@fortawesome/free-regular-svg-icons': ^5.15.4
+  '@fortawesome/free-solid-svg-icons': ^5.15.4
   '@storybook/addon-actions': 6.3.8
   '@storybook/addon-essentials': 6.3.8
   '@storybook/addon-links': 6.3.8
@@ -36,6 +40,7 @@ specifiers:
   sass: ^1.39.2
   svelte: 3.42.5
   svelte-check: 2.2.5
+  svelte-fa: ^2.3.3
   svelte-jester: 2.1.1
   svelte-loader: 3.1.2
   svelte-preprocess: 4.9.4
@@ -47,6 +52,9 @@ specifiers:
   vite-plugin-windicss: ^1.4.2
 
 dependencies:
+  '@fortawesome/free-brands-svg-icons': 5.15.4
+  '@fortawesome/free-regular-svg-icons': 5.15.4
+  '@fortawesome/free-solid-svg-icons': 5.15.4
   bulma: 0.9.3
   date-fns: 2.23.0
   rxjs: 7.3.0
@@ -54,6 +62,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.15.5
   '@babel/preset-env': 7.15.6_@babel+core@7.15.5
+  '@fortawesome/fontawesome-common-types': 0.2.36
   '@storybook/addon-actions': 6.3.8
   '@storybook/addon-essentials': 6.3.8_26221acb0cccd20eab0761749ad8a753
   '@storybook/addon-links': 6.3.8
@@ -61,7 +70,7 @@ devDependencies:
   '@storybook/addon-svelte-csf': 1.1.0_61e66bee22e1b39430cc5514576b2653
   '@storybook/svelte': 6.3.8_1835e36390a49d2ad67cffc12b4c2006
   '@sveltejs/adapter-vercel': 1.0.0-next.28
-  '@sveltejs/kit': 1.0.0-next.165_svelte@3.42.5
+  '@sveltejs/kit': 1.0.0-next.167_svelte@3.42.5
   '@testing-library/cypress': 8.0.1_cypress@8.3.1
   '@testing-library/jest-dom': 5.14.1
   '@testing-library/svelte': 3.0.3_svelte@3.42.5
@@ -84,6 +93,7 @@ devDependencies:
   sass: 1.39.2
   svelte: 3.42.5
   svelte-check: 2.2.5_58179bd59443924587fe25ab0790dd06
+  svelte-fa: 2.3.3
   svelte-jester: 2.1.1_jest@27.1.1+svelte@3.42.5
   svelte-loader: 3.1.2_svelte@3.42.5
   svelte-preprocess: 4.9.4_aefd56a55f3d7c937a75e98ad2f96174
@@ -1786,6 +1796,35 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fortawesome/fontawesome-common-types/0.2.36:
+    resolution: {integrity: sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+
+  /@fortawesome/free-brands-svg-icons/5.15.4:
+    resolution: {integrity: sha512-f1witbwycL9cTENJegcmcZRYyawAFbm8+c6IirLmwbbpqz46wyjbQYLuxOc7weXFXfB7QR8/Vd2u5R3q6JYD9g==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.36
+    dev: false
+
+  /@fortawesome/free-regular-svg-icons/5.15.4:
+    resolution: {integrity: sha512-9VNNnU3CXHy9XednJ3wzQp6SwNwT3XaM26oS4Rp391GsxVYA+0oDR2J194YCIWf7jNRCYKjUCOduxdceLrx+xw==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.36
+    dev: false
+
+  /@fortawesome/free-solid-svg-icons/5.15.4:
+    resolution: {integrity: sha512-JLmQfz6tdtwxoihXLg6lT78BorrFyCf59SAwBM6qV/0zXyVeDygJVb3fk+j5Qat+Yvcxp1buLTY5iDh1ZSAQ8w==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.36
+    dev: false
 
   /@gar/promisify/1.1.2:
     resolution: {integrity: sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==}
@@ -3894,25 +3933,25 @@ packages:
       esbuild: 0.12.26
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.165_svelte@3.42.5:
-    resolution: {integrity: sha512-yCNDj5C7pAWNFT7U194SlR44JBUjlfjgsDVTwQejRCEn0/+1yGhxr32Q6seBCuRNjJHYFzNSfMvxc/Ui0Y80KA==}
+  /@sveltejs/kit/1.0.0-next.167_svelte@3.42.5:
+    resolution: {integrity: sha512-VQSxZ2hFh36dgb/EkFs22bFsGgkctX2YgFPdt0enuZTlu08SVXubiEWPGWUg2S/gi5Biq4lvzaa+4JoYqU9B+A==}
     engines: {node: ^12.20 || >=14.13}
     hasBin: true
     peerDependencies:
       svelte: ^3.39.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.22_svelte@3.42.5+vite@2.5.6
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.24_svelte@3.42.5+vite@2.5.7
       cheap-watch: 1.0.4
       sade: 1.7.4
       svelte: 3.42.5
-      vite: 2.5.6
+      vite: 2.5.7
     transitivePeerDependencies:
       - diff-match-patch
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.22_svelte@3.42.5+vite@2.5.6:
-    resolution: {integrity: sha512-B1O/GMIxpE4iJ3/FBUJ3oYGKHhJ99G9uFARsb8kVeReLDPhtZGXTM+7brLDefJuedbKkRkGEEkbGOVuEuEBo3g==}
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.24_svelte@3.42.5+vite@2.5.7:
+    resolution: {integrity: sha512-b+n3jcLpk2j/25APQbk5ejCyd0faYTB2bOxR3gY0LX3MFGgdiL8zdf3/aawcPSxLdbL73YVlxNBIATGuvq03uQ==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       diff-match-patch: ^1.0.5
@@ -3929,7 +3968,7 @@ packages:
       require-relative: 0.8.7
       svelte: 3.42.5
       svelte-hmr: 0.14.7_svelte@3.42.5
-      vite: 2.5.6
+      vite: 2.5.7
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -12941,6 +12980,10 @@ packages:
     resolution: {integrity: sha1-fRh9tcbNu9ZNdaMvkbiZi94yc8M=}
     dev: true
 
+  /svelte-fa/2.3.3:
+    resolution: {integrity: sha512-Izq+L4H9FEsoClSsYe35KuMP+2CUltJq8eP6qrQp9q52zYxRNMQTO3dYylr6K1fFmhKiWcw9q1hUzIiyrJx8dQ==}
+    dev: true
+
   /svelte-hmr/0.14.7_svelte@3.42.5:
     resolution: {integrity: sha512-pDrzgcWSoMaK6AJkBWkmgIsecW0GChxYZSZieIYfCP0v2oPyx2CYU/zm7TBIcjLVUPP714WxmViE9Thht4etog==}
     peerDependencies:
@@ -13977,8 +14020,8 @@ packages:
       - typescript
     dev: true
 
-  /vite/2.5.6:
-    resolution: {integrity: sha512-P++qzXuOPhTql8iDamsatlJfD7/yGi8NCNwzyqkB2p0jrNJC567WEdXiKn3hQ+ZV8amQmB2dTH6svo3Z2tJ6MQ==}
+  /vite/2.5.7:
+    resolution: {integrity: sha512-hyUoWmRPhjN1aI+ZSBqDINKdIq7aokHE2ZXiztOg4YlmtpeQtMwMeyxv6X9YxHZmvGzg/js/eATM9Z1nwyakxg==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     dependencies:

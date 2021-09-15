@@ -1,6 +1,9 @@
 {
 	"author": "Yogev Boaron Ben-Har",
 	"dependencies": {
+		"@fortawesome/free-brands-svg-icons": "^5.15.4",
+		"@fortawesome/free-regular-svg-icons": "^5.15.4",
+		"@fortawesome/free-solid-svg-icons": "^5.15.4",
 		"bulma": "^0.9.3",
 		"date-fns": "^2.23.0",
 		"rxjs": "^7.3.0"
@@ -9,6 +12,7 @@
 	"devDependencies": {
 		"@babel/core": "7.15.5",
 		"@babel/preset-env": "7.15.6",
+		"@fortawesome/fontawesome-common-types": "^0.2.36",
 		"@storybook/addon-actions": "6.3.8",
 		"@storybook/addon-essentials": "6.3.8",
 		"@storybook/addon-links": "6.3.8",
@@ -39,6 +43,7 @@
 		"sass": "^1.39.2",
 		"svelte": "3.42.5",
 		"svelte-check": "2.2.5",
+		"svelte-fa": "^2.3.3",
 		"svelte-jester": "2.1.1",
 		"svelte-loader": "3.1.2",
 		"svelte-preprocess": "4.9.4",

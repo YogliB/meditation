@@ -1,6 +1,13 @@
 <script lang="ts">
 	import { format } from 'date-fns';
 	import { Button } from '$lib/components/atoms';
+	import {
+		faPlus,
+		faMinus,
+		faPlay,
+		faPause,
+		faStop,
+	} from '@fortawesome/free-solid-svg-icons';
 
 	let rawTimer = new Date();
 	let interval: NodeJS.Timeout;
@@ -54,16 +61,17 @@
 		rawTimer = new Date(rawTimer);
 	}
 
+	function playAudio() {
+		const audio = new Audio('/assets/sounds/1.ogg');
+		audio.play();
+	}
+
 	$: displayTimer =
 		rawTimer.getMinutes() === 0 ? '60:00' : format(rawTimer, 'mm:ss');
 </script>
 
 <div class="h-full flex flex-col justify-center items-center gap-4">
-	<Button
-		on:click={addMinutes}
-		icon="fas fa-plus"
-		disabled={minutes === 60}
-	/>
+	<Button on:click={addMinutes} icon={faPlus} disabled={minutes === 60} />
 
 	<h3 class="text-7xl">
 		{displayTimer}
@@ -71,7 +79,7 @@
 
 	<Button
 		on:click={subtractMinutes}
-		icon="fas fa-minus"
+		icon={faMinus}
 		disabled={minutes === 5}
 	/>
 
@@ -80,7 +88,7 @@
 			<Button
 				on:click={startTimer}
 				color="success"
-				icon="fas fa-play"
+				icon={faPlay}
 				disabled={isActive}
 				size="large"
 				isRounded
@@ -91,7 +99,7 @@
 			<Button
 				on:click={pauseTimer}
 				color="warning"
-				icon="fas fa-pause"
+				icon={faPause}
 				disabled={!isActive}
 				size="large"
 				isRounded
@@ -102,7 +110,7 @@
 			<Button
 				on:click={stopTimer}
 				color="danger"
-				icon="fas fa-stop"
+				icon={faStop}
 				size="large"
 				isRounded
 			/>

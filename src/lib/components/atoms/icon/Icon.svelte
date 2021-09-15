@@ -1,14 +1,7 @@
 <script lang="ts">
-	let clazz: string = '';
-
-	export { clazz as class };
-	export let icon: string;
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
+	export let icon: IconDefinition;
 </script>
 
-<svelte:head>
-	<script
-		src="https://kit.fontawesome.com/bea9b32e6f.js"
-		crossorigin="anonymous"></script>
-</svelte:head>
-
-<i class={`${icon} ${clazz}`} on:click />
+<Fa {icon} />

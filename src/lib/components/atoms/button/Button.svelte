@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Icon } from '../icon';
 	import type { ButtonColor, ButtonType, ButtonSize } from './models';
+	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
 	export let color: ButtonColor = 'primary';
 	export let disabled = false;
-	export let icon: string = '';
+	export let icon: IconDefinition;
 	export let isLoading = false;
 	export let isRounded = false;
 	export let label: string = '';
@@ -30,7 +31,7 @@
 	{type}
 	on:click
 >
-	{#if icon?.trim()}
+	{#if icon}
 		<span
 			class="icon"
 			class:is-small={size === 'small'}
