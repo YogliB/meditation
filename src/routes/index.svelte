@@ -71,7 +71,12 @@
 </script>
 
 <div class="h-full flex flex-col justify-center items-center gap-4">
-	<Button on:click={addMinutes} icon={faPlus} disabled={minutes === 60} />
+	<Button
+		on:click={addMinutes}
+		icon={faPlus}
+		disabled={minutes === 60}
+		tooltip="Add 5 minutes"
+	/>
 
 	<h3 class="text-7xl">
 		{displayTimer}
@@ -81,6 +86,7 @@
 		on:click={subtractMinutes}
 		icon={faMinus}
 		disabled={minutes === 5}
+		tooltip="Subtract 5 minutes"
 	/>
 
 	<div class="flex items-center gap-4">
@@ -92,6 +98,7 @@
 				disabled={isActive}
 				size="large"
 				isRounded
+				tooltip="Start timer"
 			/>
 		{/if}
 
@@ -103,6 +110,7 @@
 				disabled={!isActive}
 				size="large"
 				isRounded
+				tooltip="Pause timer"
 			/>
 		{/if}
 
@@ -113,6 +121,7 @@
 				icon={faStop}
 				size="large"
 				isRounded
+				tooltip="Stop timer"
 			/>
 		{/if}
 	</div>

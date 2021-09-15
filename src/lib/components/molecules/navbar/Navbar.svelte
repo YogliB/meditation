@@ -1,5 +1,5 @@
 <nav class="navbar is-primary p-2 shadow-sm">
-	<h1 class="text-3xl">there</h1>
+	<h1 class="text-3xl font-display">there</h1>
 </nav>
 
 <style lang="scss" global>

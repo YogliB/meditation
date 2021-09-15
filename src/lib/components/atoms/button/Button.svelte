@@ -2,7 +2,12 @@
 	import { Icon } from '../icon';
 	import type { ButtonColor, ButtonType, ButtonSize } from './models';
 	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
+	import { tooltip as tooltipAction } from '$lib/actions';
 
+	let clazz: string = '';
+
+	export { clazz as class };
+	export let style: string = '';
 	export let color: ButtonColor = 'primary';
 	export let disabled = false;
 	export let icon: IconDefinition;
@@ -11,10 +16,11 @@
 	export let label: string = '';
 	export let size: ButtonSize = 'normal';
 	export let type: ButtonType = 'button';
+	export let tooltip: string = '';
 </script>
 
 <button
-	class="button"
+	class={`button ${clazz}`}
 	class:is-primary={color === 'primary'}
 	class:is-link={color === 'link'}
 	class:is-info={color === 'info'}
@@ -29,7 +35,9 @@
 	class:is-rounded={isRounded}
 	{disabled}
 	{type}
+	{style}
 	on:click
+	use:tooltipAction={{ content: tooltip }}
 >
 	{#if icon}
 		<span
