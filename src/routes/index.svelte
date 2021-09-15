@@ -21,7 +21,9 @@
 		interval = setInterval(() => {
 			rawTimer.setSeconds(rawTimer.getSeconds() - 1);
 			refreshDisplay();
+
 			if (rawTimer.getSeconds() === 0 && rawTimer.getMinutes() === 0) {
+				playAudio();
 				clearInterval(interval);
 				return;
 			}
@@ -36,6 +38,7 @@
 	function stopTimer() {
 		isActive = false;
 		interval && clearInterval(interval);
+		rawTimer.setHours(0);
 		rawTimer.setMinutes(minutes);
 		rawTimer.setSeconds(0);
 		refreshDisplay();
@@ -67,7 +70,7 @@
 	}
 
 	$: displayTimer =
-		rawTimer.getMinutes() === 0 ? '60:00' : format(rawTimer, 'mm:ss');
+		rawTimer.getHours() === 1 ? '60:00' : format(rawTimer, 'mm:ss');
 </script>
 
 <div class="h-full flex flex-col justify-center items-center gap-4">
@@ -118,7 +121,7 @@
 			/>
 		{/if}
 
-		{#if isActive || rawTimer.getMinutes() !== minutes}
+		{#if isActive || (minutes !== 60 && rawTimer.getMinutes() !== minutes)}
 			<Button
 				on:click={stopTimer}
 				color="danger"
