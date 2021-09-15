@@ -1,4 +1,5 @@
 const preprocess = require('svelte-preprocess');
+const WindiCSS = require('windicss-webpack-plugin').default;
 
 module.exports = {
 	stories: [
@@ -12,5 +13,9 @@ module.exports = {
 	],
 	svelteOptions: {
 		preprocess: preprocess(),
+	},
+	webpackFinal: (config) => {
+		config.plugins.push(new WindiCSS());
+		return config;
 	},
 };
