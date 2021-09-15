@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { format } from 'date-fns';
-	import { Button } from '$lib/components/atoms';
+	import { Button } from '$lib/components/molecules';
 	import {
 		faPlus,
 		faMinus,
@@ -75,18 +75,20 @@
 		on:click={addMinutes}
 		icon={faPlus}
 		disabled={minutes === 60}
-		tooltip="Add 5 minutes"
+		label="Add 5 minutes"
+		hideLabel={true}
 	/>
 
-	<h3 class="text-7xl">
+	<div class="text-7xl">
 		{displayTimer}
-	</h3>
+	</div>
 
 	<Button
 		on:click={subtractMinutes}
 		icon={faMinus}
 		disabled={minutes === 5}
-		tooltip="Subtract 5 minutes"
+		label="Subtract 5 minutes"
+		hideLabel={true}
 	/>
 
 	<div class="flex items-center gap-4">
@@ -98,7 +100,8 @@
 				disabled={isActive}
 				size="large"
 				isRounded
-				tooltip="Start timer"
+				label="Start timer"
+				hideLabel={true}
 			/>
 		{/if}
 
@@ -110,7 +113,8 @@
 				disabled={!isActive}
 				size="large"
 				isRounded
-				tooltip="Pause timer"
+				label="Pause timer"
+				hideLabel={true}
 			/>
 		{/if}
 
@@ -121,7 +125,8 @@
 				icon={faStop}
 				size="large"
 				isRounded
-				tooltip="Stop timer"
+				label="Stop timer"
+				hideLabel={true}
 			/>
 		{/if}
 	</div>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Icon } from '../icon';
+	import { Icon } from '$lib/components/atoms';
 	import type { ButtonColor, ButtonType, ButtonSize } from './models';
 	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
-	import { tooltip as tooltipAction } from '$lib/actions';
+	import { tooltip } from '$lib/actions';
 
 	let clazz: string = '';
 
@@ -14,12 +14,13 @@
 	export let isLoading = false;
 	export let isRounded = false;
 	export let label: string = '';
+	export let hideLabel = false;
 	export let size: ButtonSize = 'normal';
 	export let type: ButtonType = 'button';
-	export let tooltip: string = '';
 </script>
 
 <button
+	aria-label={label}
 	class={`button ${clazz}`}
 	class:is-primary={color === 'primary'}
 	class:is-link={color === 'link'}
@@ -37,7 +38,7 @@
 	{type}
 	{style}
 	on:click
-	use:tooltipAction={{ content: tooltip }}
+	use:tooltip={{ content: hideLabel ? label : null }}
 >
 	{#if icon}
 		<span
@@ -50,7 +51,9 @@
 		</span>
 	{/if}
 
-	{label ?? ''}
+	{#if !hideLabel}
+		{label}
+	{/if}
 </button>
 
 <style lang="scss" global>
