@@ -1,9 +1,12 @@
-<script>
+<script lang="ts">
 	import Fonts from './Fonts.svelte';
-	import SEO from './SEO.svelte';
+	import SvelteSeo from 'svelte-seo';
+	import type { SvelteSeoProps } from 'svelte-seo/types/SvelteSeo';
+
+	export let seo: SvelteSeoProps = {};
 </script>
 
-<SEO />
+<SvelteSeo {...seo} />
 <Fonts />
 
 <svelte:head>
