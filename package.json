@@ -97,6 +97,8 @@
 		"lint": "eslint --ignore-path .gitignore .",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
+		"pwa:icons": "pnpm dlx pwa-asset-generator ./resources/icon.png ./static/images/icons --icons-only",
+		"pwa:splash": "pnpm dlx pwa-asset-generator ./resources/splash.png ./static/images/splash --splash-only",
 		"storybook": "start-storybook -p 6006",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest src --config jest.config.json",
 		"test:watch": "npm run test -- --watch"
