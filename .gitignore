@@ -1,5 +1,6 @@
 .DS_Store
 .env.local
+.vercel_build_output
 *.log
 /.svelte-kit
 /build
