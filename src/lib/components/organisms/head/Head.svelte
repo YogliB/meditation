@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Fonts from './Fonts.svelte';
+	import PWA from './PWA.svelte';
 	import SvelteSeo from 'svelte-seo';
 	import type { SvelteSeoProps } from 'svelte-seo/types/SvelteSeo';
 
@@ -8,6 +9,7 @@
 
 <SvelteSeo {...seo} />
 <Fonts />
+<PWA />
 
 <svelte:head>
 	<meta charset="utf-8" />
