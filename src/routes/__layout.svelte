@@ -1,5 +1,7 @@
 <script lang="ts">
 	import 'virtual:windi.css';
+	import '$lib/styles/main.scss';
+
 	import { Navbar } from '$lib/components/molecules';
 	import { Head, Footer } from '$lib/components/organisms';
 	import { website } from '$lib/config/website';
