@@ -19,8 +19,3 @@
 	</div>
 </footer>
 
-<style>
-	div {
-		color: var(--color-link);
-	}
-</style>
