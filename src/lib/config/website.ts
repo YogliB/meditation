@@ -2,7 +2,7 @@ export const website = {
 	author: 'Yogev Boaron Ben-Har',
 	entity: 'there',
 	siteKeywords:
-		'meditation, timer, simple, open-source, libre, free-software, web-app, web',
+		'meditation, timer, clock, simple, open-source, libre, free-software, web-app, web',
 	ogLanguage: 'en_US',
 	siteLanguage: 'en-US',
 	siteTitle: 'there - be there for yourself',
