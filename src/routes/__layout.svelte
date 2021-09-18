@@ -11,6 +11,13 @@
 		title: website.siteTitle,
 		description: website.siteDescription,
 		keywords: website.siteKeywords,
+		twitter: {
+			description: website.siteDescription,
+			image: 'https://there.yogev.dev/images/twitter.webp',
+			imageAlt: 'there - be there for your self',
+			site: 'https://there.yogev.dev',
+			title: 'there - be there for your self',
+		},
 	};
 </script>
 

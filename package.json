@@ -67,6 +67,16 @@
 			"pre-commit": "lint-staged"
 		}
 	},
+	"jest": {
+		"moduleFileExtensions": [
+			"js",
+			"ts"
+		],
+		"transform": {
+			"^.+\\.js$": "babel-jest",
+			"^.+\\.ts$": "ts-jest"
+		}
+	},
 	"license": "GPL-3.0-or-later",
 	"lint-staged": {
 		"*.{js, ts, svelte}": [
@@ -101,8 +111,7 @@
 		"pwa:icons": "pnpm dlx pwa-asset-generator ./resources/icon.png ./static/images/icons --icons-only",
 		"pwa:splash": "pnpm dlx pwa-asset-generator ./resources/splash.png ./static/images/splash --splash-only",
 		"storybook": "start-storybook -p 6006",
-		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest src --config jest.config.json",
-		"test:watch": "npm run test -- --watch"
+		"test": "jest src --config jest.config.json"
 	},
 	"type": "module",
 	"version": "0.0.1"
