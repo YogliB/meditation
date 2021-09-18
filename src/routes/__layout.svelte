@@ -11,6 +11,12 @@
 		title: website.siteTitle,
 		description: website.siteDescription,
 		keywords: website.siteKeywords,
+		openGraph: {
+			description: website.siteDescription,
+			title: website.siteTitle,
+			type: 'website',
+			url: 'https://there.yogev.dev',
+		},
 		twitter: {
 			description: website.siteDescription,
 			image: 'https://there.yogev.dev/images/twitter.webp',
