@@ -14,8 +14,7 @@
 	/>
 
 	<div>
-		Made with <Icon icon={faHeart} /> by
+		Made with <Icon icon={faHeart} color="danger" /> by
 		<Link href="https://yogev.dev" label="Yogev" />
 	</div>
 </footer>
-
