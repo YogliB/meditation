@@ -14,7 +14,7 @@
 			hideLabel={true}
 		/>
 		<Link
-			href="https://umami.yogev.dev/share/OUVRwjxV/there"
+			href="https://umami.yogev.dev/share/5nlNtN8g/there"
 			icon={faChartLine}
 			iconSize="large"
 			label="Analytics"
