@@ -19,8 +19,8 @@
 	<script
 		async
 		defer
-		data-website-id="af781d65-2ff2-4209-b30f-d5f0ed1bbda8"
-		src="https://umami.yogev.dev/umami.js"
+		data-website-id="a34beffe-d368-44ba-b212-2a1ebe8757a5"
+		src="https://umami.usethere.app/umami.js"
 		data-do-not-track="true"
 		data-domains="there.yogev.dev"></script>
 </svelte:head>
