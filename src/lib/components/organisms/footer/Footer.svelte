@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { faHeart, faChartLine } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faHeart,
+		faChartLine,
+		faEnvelope,
+	} from '@fortawesome/free-solid-svg-icons';
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 	import { Icon, Link } from '$lib/components/atoms';
 </script>
@@ -10,14 +14,21 @@
 			href="https://github.com/YogliB/meditation"
 			icon={faGithub}
 			iconSize="large"
-			label="Github"
+			label="github"
 			hideLabel={true}
 		/>
 		<Link
 			href="https://umami.usethere.app/share/2BbTqn8D/there"
 			icon={faChartLine}
 			iconSize="large"
-			label="Analytics"
+			label="analytics"
+			hideLabel={true}
+		/>
+		<Link
+			href="mailto:hey@usethere.app"
+			icon={faEnvelope}
+			iconSize="large"
+			label="talk to us"
 			hideLabel={true}
 		/>
 	</div>
