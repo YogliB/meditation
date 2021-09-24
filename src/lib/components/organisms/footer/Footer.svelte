@@ -6,9 +6,20 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 	import { Icon, Link } from '$lib/components/atoms';
+	import { fade } from 'svelte/transition';
+
+	let clazz = '';
+
+	export { clazz as class };
 </script>
 
-<footer class="flex justify-between items-center p-4">
+<footer
+	class={`flex justify-between items-center w-full absolute bottom-0  p-4 ${
+		clazz ?? ''
+	}`}
+	in:fade
+	out:fade
+>
 	<div class="flex items-center gap-4">
 		<Link
 			href="https://github.com/YogliB/meditation"

@@ -8,15 +8,19 @@
 		faPause,
 		faStop,
 	} from '@fortawesome/free-solid-svg-icons';
+	import { setInSession, toggleMeditating } from '$lib/stores';
 
 	let rawTimer = new Date();
 	let interval: NodeJS.Timeout;
 	let minutes = 5;
 	let isActive = false;
 
-	stopTimer();
+	resetTimer();
 
 	function startTimer() {
+		toggleMeditating();
+		setInSession(true);
+
 		isActive = true;
 		interval = setInterval(() => {
 			rawTimer.setSeconds(rawTimer.getSeconds() - 1);
@@ -24,18 +28,27 @@
 
 			if (rawTimer.getSeconds() === 0 && rawTimer.getMinutes() === 0) {
 				playAudio();
-				clearInterval(interval);
+				setInSession(false);
+				toggleMeditating();
+				resetTimer();
 				return;
 			}
 		}, 1000);
 	}
 
 	function pauseTimer() {
+		toggleMeditating();
 		isActive = false;
 		clearInterval(interval);
 	}
 
 	function stopTimer() {
+		setInSession(false);
+		toggleMeditating();
+		resetTimer();
+	}
+
+	function resetTimer() {
 		isActive = false;
 		interval && clearInterval(interval);
 		rawTimer.setHours(0);

@@ -5,7 +5,11 @@
 	import { Navbar } from '$lib/components/molecules';
 	import { Head, Footer } from '$lib/components/organisms';
 	import { website } from '$lib/config/website';
+	import { appState } from '$lib/stores';
+	import { onMount } from 'svelte';
+
 	import type { SvelteSeoProps } from 'svelte-seo/types/SvelteSeo';
+	import type { Unsubscriber } from 'svelte/store';
 
 	let seo: SvelteSeoProps = {
 		title: website.siteTitle,
@@ -25,6 +29,16 @@
 			title: 'there - be there for your self',
 		},
 	};
+	let isInSession = false;
+	let unsubscribe: Unsubscriber;
+
+	onMount(() => {
+		unsubscribe = appState.subscribe(
+			(state) => (isInSession = state.isInSession)
+		);
+
+		return unsubscribe;
+	});
 </script>
 
 <Head {seo} />
@@ -35,4 +49,6 @@
 	<slot />
 </main>
 
-<Footer />
+{#if !isInSession}
+	<Footer />
+{/if}
