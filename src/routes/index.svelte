@@ -9,13 +9,22 @@
 		faStop,
 	} from '@fortawesome/free-solid-svg-icons';
 	import { setInSession, toggleMeditating } from '$lib/stores';
+	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	let rawTimer = new Date();
 	let interval: NodeJS.Timeout;
 	let minutes = 5;
 	let isActive = false;
+	let startSound: HTMLAudioElement;
+	let endSound: HTMLAudioElement;
 
-	resetTimer();
+	onMount(() => {
+		startSound = new Audio('/sounds/start.ogg');
+		endSound = new Audio('/sounds/end.ogg');
+
+		resetTimer();
+	});
 
 	function startTimer() {
 		toggleMeditating();
@@ -26,8 +35,15 @@
 			rawTimer.setSeconds(rawTimer.getSeconds() - 1);
 			refreshDisplay();
 
+			if (
+				rawTimer.getSeconds() === 0 &&
+				rawTimer.getMinutes() === minutes
+			) {
+				playStartSound();
+			}
+
 			if (rawTimer.getSeconds() === 0 && rawTimer.getMinutes() === 0) {
-				playAudio();
+				playEndSound();
 				setInSession(false);
 				toggleMeditating();
 				resetTimer();
@@ -53,7 +69,7 @@
 		interval && clearInterval(interval);
 		rawTimer.setHours(0);
 		rawTimer.setMinutes(minutes);
-		rawTimer.setSeconds(0);
+		rawTimer.setSeconds(5);
 		refreshDisplay();
 	}
 
@@ -77,9 +93,12 @@
 		rawTimer = new Date(rawTimer);
 	}
 
-	function playAudio() {
-		const audio = new Audio('/assets/sounds/1.ogg');
-		audio.play();
+	function playStartSound() {
+		startSound.play();
+	}
+
+	function playEndSound() {
+		endSound.play();
 	}
 
 	$: displayTimer =
@@ -87,25 +106,33 @@
 </script>
 
 <div class="h-full flex flex-col justify-center items-center gap-4">
-	<Button
-		on:click={addMinutes}
-		icon={faPlus}
-		disabled={minutes === 60}
-		label="Add 5 minutes"
-		hideLabel={true}
-	/>
+	{#if !isActive}
+		<div in:fade out:fade>
+			<Button
+				on:click={addMinutes}
+				icon={faPlus}
+				disabled={minutes === 60}
+				label="Add 5 minutes"
+				hideLabel={true}
+			/>
+		</div>
+	{/if}
 
 	<div class="text-7xl">
 		{displayTimer}
 	</div>
 
-	<Button
-		on:click={subtractMinutes}
-		icon={faMinus}
-		disabled={minutes === 5}
-		label="Subtract 5 minutes"
-		hideLabel={true}
-	/>
+	{#if !isActive}
+		<div in:fade out:fade>
+			<Button
+				on:click={subtractMinutes}
+				icon={faMinus}
+				disabled={minutes === 5}
+				label="Subtract 5 minutes"
+				hideLabel={true}
+			/>
+		</div>
+	{/if}
 
 	<div class="flex items-center gap-4">
 		{#if !isActive}
