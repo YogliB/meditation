@@ -22,5 +22,5 @@
 		data-website-id="a34beffe-d368-44ba-b212-2a1ebe8757a5"
 		src="https://umami.usethere.app/umami.js"
 		data-do-not-track="true"
-		data-domains="there.yogev.dev"></script>
+		data-domains="usethere.app"></script>
 </svelte:head>
