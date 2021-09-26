@@ -8,6 +8,9 @@
 	import { appState } from '$lib/stores';
 	import { onMount } from 'svelte';
 
+	import * as Sentry from '@sentry/browser';
+	import { Integrations } from '@sentry/tracing';
+
 	import type { SvelteSeoProps } from 'svelte-seo/types/SvelteSeo';
 	import type { Unsubscriber } from 'svelte/store';
 
@@ -33,6 +36,12 @@
 	let unsubscribe: Unsubscriber;
 
 	onMount(() => {
+		Sentry.init({
+			dsn: 'https://640abe304070430dac810d8d66cfd577@o1014493.ingest.sentry.io/5979706',
+			integrations: [new Integrations.BrowserTracing()],
+			tracesSampleRate: 1.0,
+		});
+
 		unsubscribe = appState.subscribe(
 			(state) => (isInSession = state.isInSession)
 		);

@@ -4,6 +4,8 @@
 		"@fortawesome/free-brands-svg-icons": "^5.15.4",
 		"@fortawesome/free-regular-svg-icons": "^5.15.4",
 		"@fortawesome/free-solid-svg-icons": "^5.15.4",
+		"@sentry/browser": "^6.13.2",
+		"@sentry/tracing": "^6.13.2",
 		"bulma": "^0.9.3",
 		"date-fns": "^2.23.0",
 		"object-hash": "^2.2.0",
