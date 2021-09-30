@@ -13,6 +13,7 @@
 
 	import type { SvelteSeoProps } from 'svelte-seo/types/SvelteSeo';
 	import type { Unsubscriber } from 'svelte/store';
+	import type { TimerState } from '$lib/types';
 
 	let seo: SvelteSeoProps = {
 		title: website.siteTitle,
@@ -32,7 +33,7 @@
 			title: 'there - be there for your self',
 		},
 	};
-	let isInSession = false;
+	let timerState: TimerState;
 	let unsubscribe: Unsubscriber;
 
 	onMount(() => {
@@ -43,7 +44,7 @@
 		});
 
 		unsubscribe = appState.subscribe(
-			(state) => (isInSession = state.isInSession)
+			(state) => (timerState = state.timerState)
 		);
 
 		return unsubscribe;
@@ -58,6 +59,6 @@
 	<slot />
 </main>
 
-{#if !isInSession}
+{#if !timerState || timerState === 'off'}
 	<Footer />
 {/if}

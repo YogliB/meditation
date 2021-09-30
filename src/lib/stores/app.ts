@@ -2,16 +2,14 @@ import { writable } from 'svelte/store';
 
 export type AppState = {
 	isDarkMode: boolean;
-	isInSession: boolean;
-	isMeditating: boolean;
 	shouldPlaySound: boolean;
+	timerState: 'meditating' | 'inSession' | 'off';
 };
 
 export const appState = writable<AppState>({
 	isDarkMode: false,
-	isMeditating: false,
-	isInSession: false,
 	shouldPlaySound: true,
+	timerState: 'off',
 });
 
 export function toggleDarkMode(): void {
@@ -21,23 +19,18 @@ export function toggleDarkMode(): void {
 	}));
 }
 
-export function setInSession(isInSession: boolean): void {
-	appState.update((state) => ({
-		...state,
-		isInSession,
-	}));
-}
-
-export function toggleMeditating(): void {
-	appState.update((state) => ({
-		...state,
-		isMeditating: !state.isMeditating,
-	}));
-}
-
 export function toggleSound(): void {
 	appState.update((state) => ({
 		...state,
 		shouldPlaySound: !state.shouldPlaySound,
+	}));
+}
+
+export function updateTimerState(
+	timerState: 'meditating' | 'inSession' | 'off'
+): void {
+	appState.update((state) => ({
+		...state,
+		timerState,
 	}));
 }
