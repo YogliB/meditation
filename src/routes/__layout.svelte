@@ -37,6 +37,8 @@
 	let unsubscribe: Unsubscriber;
 
 	onMount(() => {
+		Notification.requestPermission().then();
+
 		Sentry.init({
 			dsn: 'https://640abe304070430dac810d8d66cfd577@o1014493.ingest.sentry.io/5979706',
 			integrations: [new Integrations.BrowserTracing()],
