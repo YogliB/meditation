@@ -36,6 +36,9 @@ function startTimer() {
 		if (rawTimer.getSeconds() === 0 && rawTimer.getMinutes() === 0) {
 			clearInterval(interval);
 			postMessage({ action: 'end' });
+			new Notification('Time is up!', {
+				body: 'Good job!',
+			});
 		}
 	}, 1000);
 }
